@@ -1,4 +1,6 @@
 export function Slider() {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <section
       id="Carrusel"
@@ -9,7 +11,7 @@ export function Slider() {
       <div className="carousel-inner h-100">
         <div className="carousel-item active h-100 position-relative">
           <img
-            src="/carrusel/pexels-pixabay-274506.jpg"
+            src={`${baseUrl}carrusel/pexels-pixabay-274506.jpg`}
             className="d-block w-100 h-100 object-fit-cover"
             alt="Balon de futbol en la cancha"
           />
@@ -28,7 +30,7 @@ export function Slider() {
 
         <div className="carousel-item h-100 position-relative">
           <img
-            src="/carrusel/pexels-mart-production-8869251.jpg"
+            src={`${baseUrl}carrusel/pexels-mart-production-8869251.jpg`}
             className="d-block w-100 h-100 object-fit-cover"
             alt="Deportista tomando de botellas de agua"
           />
@@ -47,7 +49,7 @@ export function Slider() {
 
         <div className="carousel-item h-100 position-relative">
           <img
-            src="/carrusel/pexels-marcus-queiroga-silva-86421404-15033214.jpg"
+            src={`${baseUrl}carrusel/pexels-marcus-queiroga-silva-86421404-15033214.jpg`}
             className="d-block w-100 h-100 object-fit-cover"
             alt="Llaveros deportivos"
           />
@@ -66,7 +68,7 @@ export function Slider() {
 
         <div className="carousel-item h-100 position-relative">
           <img
-            src="/carrusel/il_fullxfull.3436519645_axb1.webp"
+            src={`${baseUrl}carrusel/il_fullxfull.3436519645_axb1.webp`}
             className="d-block w-100 h-100 object-fit-cover"
             alt="Llaveros deportivos"
           />

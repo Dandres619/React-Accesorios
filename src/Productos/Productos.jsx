@@ -1,4 +1,6 @@
 export function Productos() {
+  const baseUrl = import.meta.env.BASE_URL;
+
   return (
     <section id="Productos" className="py-5 bg-light">
       <div className="container">
@@ -8,7 +10,7 @@ export function Productos() {
           <div className="col-md-3">
             <div className="card h-100 shadow-sm">
               <img
-                src="/productos/camiseta-futbol.jpg"
+                src={`${baseUrl}productos/camisa-retro.webp`}
                 className="card-img-top object-fit-cover"
                 alt="Camiseta Futbol"
                 style={{ height: "200px" }}
@@ -23,7 +25,7 @@ export function Productos() {
           <div className="col-md-3">
             <div className="card h-100 shadow-sm">
               <img
-                src="/productos/botella-deportiva.jpg"
+                src={`${baseUrl}productos/botella.jpeg`}
                 className="card-img-top object-fit-cover"
                 alt="Botella Deportiva"
                 style={{ height: "200px" }}
@@ -38,7 +40,7 @@ export function Productos() {
           <div className="col-md-3">
             <div className="card h-100 shadow-sm">
               <img
-                src="/productos/llavero-balón.jpg"
+                src={`${baseUrl}productos/llavero.webp`}
                 className="card-img-top object-fit-cover"
                 alt="Llavero balón"
                 style={{ height: "200px" }}
@@ -53,7 +55,7 @@ export function Productos() {
           <div className="col-md-3">
             <div className="card h-100 shadow-sm">
               <img
-                src="/productos/polera-equipo.jpg"
+                src={`${baseUrl}productos/camisa.jpg`}
                 className="card-img-top object-fit-cover"
                 alt="Polera con logo"
                 style={{ height: "200px" }}

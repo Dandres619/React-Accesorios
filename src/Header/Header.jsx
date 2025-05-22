@@ -17,16 +17,16 @@ export function Header() {
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page">Inicio</a>
+                <a className="nav-link active" aria-current="page" href='#Carrusel'>Inicio</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link">Calidad</a>
+                <a className="nav-link" href='#Calidad'>Calidad</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link">Productos</a>
+                <a className="nav-link" href='#Productos'>Productos</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link">Contacto</a>
+                <a className="nav-link" href='#Contacto'>Contacto</a>
               </li>
             </ul>
           </div>
