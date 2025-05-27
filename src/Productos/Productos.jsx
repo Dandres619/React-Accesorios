@@ -1,72 +1,52 @@
+import { ProductoCard } from './ProductoCard';
+
 export function Productos() {
-  const baseUrl = import.meta.env.BASE_URL;
+  const productos = [
+    {
+      imagen: "productos/camisa-retro.webp",
+      titulo: "Camiseta Futbol Retro",
+      descripcion: "Diseño clásico de tus equipos favoritos.",
+      precio: "250.000",
+      alt: "Camiseta Futbol",
+    },
+    {
+      imagen: "productos/botella.jpeg",
+      titulo: "Botella Deportiva",
+      descripcion: "Mantente hidratado con estilo.",
+      precio: "65.000",
+      alt: "Botella Deportiva",
+    },
+    {
+      imagen: "productos/llavero.webp",
+      titulo: "Llavero Balón",
+      descripcion: "Perfecto para fans y coleccionistas.",
+      precio: "25.000",
+      alt: "Llavero balón",
+    },
+    {
+      imagen: "productos/camisa.jpg",
+      titulo: "Camisa de Hincha",
+      descripcion: "Demuestra tu pasión en cada salida.",
+      precio: "450.000",
+      alt: "Camisa del equipo",
+    },
+  ];
 
   return (
     <section id="Productos" className="py-5 bg-light">
       <div className="container">
         <h2 className="text-center mb-4 fw-bold">Nuestros Productos</h2>
         <div className="row g-4">
-
-          <div className="col-md-3">
-            <div className="card h-100 shadow-sm">
-              <img
-                src={`${baseUrl}productos/camisa-retro.webp`}
-                className="card-img-top object-fit-cover"
-                alt="Camiseta Futbol"
-                style={{ height: "200px" }}
-              />
-              <div className="card-body text-center">
-                <h5 className="card-title">Camiseta Futbol Retro</h5>
-                <p className="card-text">Diseño clásico de tus equipos favoritos.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-3">
-            <div className="card h-100 shadow-sm">
-              <img
-                src={`${baseUrl}productos/botella.jpeg`}
-                className="card-img-top object-fit-cover"
-                alt="Botella Deportiva"
-                style={{ height: "200px" }}
-              />
-              <div className="card-body text-center">
-                <h5 className="card-title">Botella Deportiva</h5>
-                <p className="card-text">Mantente hidratado con estilo.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-3">
-            <div className="card h-100 shadow-sm">
-              <img
-                src={`${baseUrl}productos/llavero.webp`}
-                className="card-img-top object-fit-cover"
-                alt="Llavero balón"
-                style={{ height: "200px" }}
-              />
-              <div className="card-body text-center">
-                <h5 className="card-title">Llavero Balón</h5>
-                <p className="card-text">Perfecto para fans y coleccionistas.</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-3">
-            <div className="card h-100 shadow-sm">
-              <img
-                src={`${baseUrl}productos/camisa.jpg`}
-                className="card-img-top object-fit-cover"
-                alt="Polera con logo"
-                style={{ height: "200px" }}
-              />
-              <div className="card-body text-center">
-                <h5 className="card-title">Polera de Hincha</h5>
-                <p className="card-text">Demuestra tu pasión en cada salida.</p>
-              </div>
-            </div>
-          </div>
-
+          {productos.map((prod, index) => (
+            <ProductoCard
+              key={index}
+              imagen={prod.imagen}
+              titulo={prod.titulo}
+              descripcion={prod.descripcion}
+              precio={prod.precio}
+              alt={prod.alt}
+            />
+          ))}
         </div>
       </div>
     </section>
