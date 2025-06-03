@@ -1,7 +1,7 @@
 export function Calidad() {
   return (
     <section id="Calidad" className="container py-5">
-      <h2 className="text-center mb-4 fw-bold">¿Por qué elegir FutVibe?</h2>
+      <h2 className="text-center mb-4 fw-bold text-primary">¿Por qué elegir FutVibe?</h2>
       <div className="row g-4">
         <div className="col-md-4 text-center">
           <i className="bi bi-shield-check display-4 text-primary mb-3"></i>

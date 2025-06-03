@@ -1,19 +1,21 @@
+import { Link } from "react-router-dom";
+
 export function Footer() {
   return (
-    <footer class="bg-dark text-white py-4">
-      <div class="container text-center">
+    <footer className="bg-dark text-white py-4">
+      <div className="container text-center">
         <h5>FutVibe</h5>
         <p>&copy; 2025 FutVibe. Todos los derechos reservados.</p>
         <div>
-          <a class="text-white me-3">
+          <Link to="/" className="text-white me-3">
             Facebook
-          </a>
-          <a  class="text-white me-3">
+          </Link>
+          <Link to="/" className="text-white me-3">
             Twitter
-          </a>
-          <a  class="text-white">
+          </Link>
+          <Link to="/" className="text-white">
             Instagram
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

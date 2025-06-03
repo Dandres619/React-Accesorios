@@ -1,11 +1,12 @@
 import logo from '../assets/tienda-logo.png'
+import { Link } from "react-router-dom";
 
 export function Header() {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             <img 
             src={logo} 
             alt="Logo de la pagina"
@@ -13,11 +14,11 @@ export function Header() {
             height="80"
             className="d-inline-block align-text-top" 
             />
-          </a>
+          </Link>
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href='#Carrusel'>Inicio</a>
+                <Link to="/" className="nav-link active" aria-current="page" href='#Carrusel'>Inicio</Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href='#Calidad'>Calidad</a>
