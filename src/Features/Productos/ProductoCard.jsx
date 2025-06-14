@@ -1,15 +1,33 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CarritoContext } from "./Carrito";
 
 export function ProductoCard({ imagen, titulo, descripcion, precio, alt }) {
   const [contador, setContador] = useState(0);
+  const [mensaje, setMensaje] = useState("");
+  const { agregarAlCarrito } = useContext(CarritoContext);
 
-  const aumentarContador = () => setContador((prev) => prev === 10 ? 10 : prev + 1);
+  const aumentarContador = () =>
+    setContador((prev) => (prev === 10 ? 10 : prev + 1));
   const reducirContador = () =>
     setContador((prev) => (prev > 0 ? prev - 1 : 0));
 
+  const handleAgregar = () => {
+    if (contador > 0) {
+      agregarAlCarrito({
+        titulo,
+        precio,
+        cantidad: contador,
+        imagen,
+      });
+      setContador(0);
+      setMensaje("¡Agregado con éxito!");
+      setTimeout(() => setMensaje(""), 1500);
+    }
+  };
+
   return (
     <div className="col-md-6 col-lg-3">
-      <div className="card h-100 shadow-sm border-0 producto-card">
+      <div className="card h-100 shadow-sm producto-card">
         <img
           src={imagen}
           className="card-img-top object-fit-cover"
@@ -42,7 +60,18 @@ export function ProductoCard({ imagen, titulo, descripcion, precio, alt }) {
               <i className="bi bi-plus"></i>
             </button>
           </div>
-          <button className="btn btn-success w-100">Agregar al carrito</button>
+          <button
+            className="btn btn-success w-100"
+            disabled={contador <= 0}
+            onClick={handleAgregar}
+          >
+            Agregar al carrito
+          </button>
+          {mensaje && (
+            <div className="alert alert-success py-1 mt-2 mb-0 text-center" style={{ fontSize: "0.95rem" }}>
+              {mensaje}
+            </div>
+          )}
         </div>
       </div>
     </div>
