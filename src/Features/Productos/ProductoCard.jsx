@@ -9,21 +9,25 @@ export function ProductoCard({ imagen, titulo, descripcion, precio, alt }) {
 
   return (
     <div className="col-md-6 col-lg-3">
-      <div className="card h-100 shadow border-0 producto-card transition-hover">
+      <div className="card h-100 shadow-sm border-0 producto-card">
         <img
           src={imagen}
           className="card-img-top object-fit-cover"
           alt={alt}
           style={{ height: "200px", objectFit: "cover" }}
         />
-        <div className="card-body d-flex flex-column justify-content-between">
-          <div className="text-center">
-            <h5 className="card-title fw-bold">{titulo}</h5>
-            <p className="card-text small text-muted">{descripcion}</p>
-            <p className="fs-5 fw-bold text-success mb-3">${precio}</p>
-          </div>
-
-          <div className="d-flex justify-content-between align-items-center gap-3">
+        <div
+          className="card-body d-flex flex-column justify-content-between"
+          style={{ gap: "1.2rem" }}
+        >
+          <h5 className="card-title fw-bold text-center w-100">{titulo}</h5>
+          <p className="card-text small text-muted text-center w-100">
+            {descripcion}
+          </p>
+          <p className="fs-5 fw-bold text-success mb-0 text-center w-100">
+            ${precio}
+          </p>
+          <div className="d-flex justify-content-between align-items-center w-100">
             <button
               className="btn btn-outline-primary"
               onClick={reducirContador}
@@ -38,6 +42,7 @@ export function ProductoCard({ imagen, titulo, descripcion, precio, alt }) {
               <i className="bi bi-plus"></i>
             </button>
           </div>
+          <button className="btn btn-success w-100">Agregar al carrito</button>
         </div>
       </div>
     </div>

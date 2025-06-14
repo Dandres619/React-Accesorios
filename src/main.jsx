@@ -9,7 +9,9 @@ import { ProductProvider } from './Features/ProductContext/ProductContext.jsx';
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <ProductProvider>
-    <App />
-  </ProductProvider>,
+  <StrictMode>
+    <ProductProvider>
+      <App />
+    </ProductProvider>
+  </StrictMode>
 )
