@@ -23,8 +23,8 @@ export function Slider() {
             className="position-absolute top-50 start-50 translate-middle text-white text-center"
             style={{ zIndex: 2 }}
           >
-            <h2 className="display-5 fw-bold">¡FutVibe!</h2>
-            <p className="lead">Camisas, botellas, llaveros y más</p>
+            <h2 className="display-5 fw-bold">¡AllVibe!</h2>
+            <p className="lead">Accesorios deportivos, tecnología, joyería y más.</p>
           </div>
         </div>
 

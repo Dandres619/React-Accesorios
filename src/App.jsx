@@ -1,14 +1,14 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HomePage } from "./HomePage/HomePage";
-import { Header } from "./Header/Header";
-import { Footer } from "./Footer/Footer";
-import Formulario from "./Formulario/Formulario";
+import { HomePage } from "./Features/HomePage/HomePage";
+import { Navbar } from "./Features/Navbar/Navbar";
+import { Footer } from "./Features/Footer/Footer";
+import Formulario from "./Features/Formulario/Formulario";
 
 function App() {
   return (
-    <BrowserRouter basename="/React-Accesorios">
-      <Header />
+    <BrowserRouter basename="/React-Accesorios/">
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/formulario" element={<Formulario />} />

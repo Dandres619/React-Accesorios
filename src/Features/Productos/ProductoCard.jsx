@@ -1,18 +1,17 @@
 import { useState } from "react";
 
 export function ProductoCard({ imagen, titulo, descripcion, precio, alt }) {
-  const baseUrl = import.meta.env.BASE_URL;
   const [contador, setContador] = useState(0);
 
-  const aumentarContador = () => setContador((prev) => prev + 1);
+  const aumentarContador = () => setContador((prev) => prev === 10 ? 10 : prev + 1);
   const reducirContador = () =>
     setContador((prev) => (prev > 0 ? prev - 1 : 0));
 
   return (
     <div className="col-md-6 col-lg-3">
-      <div className="card h-100 shadow-sm border-0 producto-card transition-hover">
+      <div className="card h-100 shadow border-0 producto-card transition-hover">
         <img
-          src={`${baseUrl}${imagen}`}
+          src={imagen}
           className="card-img-top object-fit-cover"
           alt={alt}
           style={{ height: "200px", objectFit: "cover" }}

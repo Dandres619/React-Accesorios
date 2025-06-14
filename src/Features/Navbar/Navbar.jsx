@@ -1,7 +1,7 @@
-import logo from '../assets/tienda-logo.png'
+import logo from '../../assets/tienda-logo.png'
 import { Link } from "react-router-dom";
 
-export function Header() {
+export function Navbar() {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
