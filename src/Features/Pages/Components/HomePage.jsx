@@ -1,8 +1,8 @@
 import React from "react";
-import { Slider } from "../Slider/Slider";
-import { Calidad } from "../Calidad/Calidad";
-import { Productos } from "../Productos/Productos";
-import { Contacto } from "../Contacto/Contacto";
+import { Slider } from "../../LandingPage/Components/Slider";
+import { Calidad } from "../../LandingPage/Components/Calidad";
+import { Productos } from "../../LandingPage/Components/Productos";
+import { Contacto } from "../../LandingPage/Components/Contacto";
 
 export function HomePage() {
   return (

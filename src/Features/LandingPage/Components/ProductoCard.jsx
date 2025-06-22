@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { CarritoContext } from "./Carrito";
+import { CarritoContext } from "../../Carrito/Components/Carrito";
 
 export function ProductoCard({ imagen, titulo, descripcion, precio, alt }) {
   const [contador, setContador] = useState(0);

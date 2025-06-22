@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductContext } from "../ProductContext/ProductContext";
+import { ProductContext } from "./ProductContext";
 import { ProductoCard } from "./ProductoCard";
 
 export function Productos() {
@@ -15,7 +15,7 @@ export function Productos() {
           Nuestros Productos
         </h2>
         <div className="row g-4">
-          {productos.slice(0,5).map((producto) => (
+          {productos.slice(0,8).map((producto) => (
             <ProductoCard
               key={producto.id}
               imagen={producto.image}
