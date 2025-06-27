@@ -13,9 +13,9 @@ export const ProductProvider = ({ children }) => {
         const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         setProductos(data);
-        setLoading(false);
       } catch (error) {
         setError(error.message || "Error al cargar productos");
+      } finally {
         setLoading(false);
       }
     }
@@ -23,9 +23,7 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductContext.Provider
-      value={{ productos, loading, error }}
-    >
+    <ProductContext.Provider value={{ productos, loading, error }}>
       {children}
     </ProductContext.Provider>
   );
