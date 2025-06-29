@@ -1,24 +1,43 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { HomePage } from "./Features/Pages/Components/HomePage";
+import { LoginForm } from "./Features/auth/components/LoginForm";
+import { RegisterForm } from "./Features/auth/components/RegisterForm";
 import { Navbar } from "./Features/LandingPage/Components/Navbar";
 import { Footer } from "./Features/LandingPage/Components/Footer";
 import Formulario from "./Features/LandingPage/Components/Formulario";
 import { CarritoModal } from "./Features/Carrito/Components/CarritoModal";
 
-function App() {
+function AppContent() {
+  const location = useLocation();
   const [showCarrito, setShowCarrito] = useState(false);
 
+  const isAuthPage =
+    location.pathname === "/" || location.pathname === "/registrarse";
+
   return (
-    <BrowserRouter basename="/React-Accesorios/">
-      <Navbar onCarritoClick={() => setShowCarrito(true)} />
+    <>
+      {!isAuthPage && <Navbar onCarritoClick={() => setShowCarrito(true)} />}
+
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/registrarse" element={<RegisterForm />} />
+        <Route path="/inicio" element={<HomePage />} />
         <Route path="/formulario" element={<Formulario />} />
       </Routes>
+
       <CarritoModal show={showCarrito} onClose={() => setShowCarrito(false)} />
-      <Footer />
+
+      {!isAuthPage && <Footer />}
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter basename="/React-Accesorios/">
+      <AppContent />
     </BrowserRouter>
   );
 }

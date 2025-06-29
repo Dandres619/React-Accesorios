@@ -7,13 +7,17 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { ProductProvider } from "./Features/LandingPage/Components/ProductContext.jsx";
 import { CarritoProvider } from "./Features/Carrito/Components/Carrito.jsx";
+import { Provider } from "react-redux";
+import { store } from "./app/store.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ProductProvider>
-      <CarritoProvider>
-        <App />
-      </CarritoProvider>
-    </ProductProvider>
+    <Provider store={store}>
+      <ProductProvider>
+        <CarritoProvider>
+          <App />
+        </CarritoProvider>
+      </ProductProvider>
+    </Provider>
   </StrictMode>
 );
