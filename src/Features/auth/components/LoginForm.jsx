@@ -39,7 +39,6 @@ export const LoginForm = () => {
     e.preventDefault();
     setLocalError("");
 
-    // Asegurarse que los errores no estén presentes
     if (emailError || passwordError || !email || !password) {
       setLocalError("Por favor corrige los errores antes de continuar.");
       return;
@@ -48,7 +47,7 @@ export const LoginForm = () => {
     const result = await login({ email, password });
 
     if (result?.meta?.requestStatus === "fulfilled") {
-      navigate("/inicio");
+      navigate("/");
     } else {
       setLocalError("Correo o contraseña incorrectos");
     }

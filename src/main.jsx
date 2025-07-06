@@ -5,8 +5,8 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { ProductProvider } from "./Features/LandingPage/Components/ProductContext.jsx";
-import { CarritoProvider } from "./Features/Carrito/Components/Carrito.jsx";
+import { ProductProvider } from "./Features/Carrito/context/ProductContext.jsx";
+import { CarritoProvider } from "./Features/Carrito/context/CarritoContext.jsx";
 import { Provider } from "react-redux";
 import { store } from "./app/store.js";
 

@@ -4,7 +4,7 @@ export function Footer() {
   return (
     <footer className="bg-dark text-white py-4">
       <div className="container text-center">
-        <h5>FutVibe</h5>
+        <h5>AllVibe</h5>
         <p>&copy; 2025 AllVibe. Todos los derechos reservados.</p>
         <div>
           <Link to="/" className="text-white me-3">

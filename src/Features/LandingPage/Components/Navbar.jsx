@@ -1,7 +1,16 @@
 import logo from "../../../assets/tienda-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../auth/hooks/useAuth";
 
 export function Navbar({ onCarritoClick }) {
+  const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,12 +27,7 @@ export function Navbar({ onCarritoClick }) {
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <Link
-                  to="/"
-                  className="nav-link active"
-                  aria-current="page"
-                  href="#Carrusel"
-                >
+                <Link to="/" className="nav-link">
                   Inicio
                 </Link>
               </li>
@@ -51,6 +55,30 @@ export function Navbar({ onCarritoClick }) {
                   <i className="bi bi-cart"></i> Carrito
                 </button>
               </li>
+
+              {isAuthenticated ? (
+                <>
+                  <li className="nav-item">
+                    <Link to="/dashboard" className="btn btn-warning ms-3">
+                      Dashboard
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <button
+                      className="btn btn-outline-light ms-2"
+                      onClick={handleLogout}
+                    >
+                      Cerrar sesión
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <li className="nav-item">
+                  <Link to="/login" className="btn btn-outline-light ms-3">
+                    Login
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

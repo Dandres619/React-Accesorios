@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CarritoContext } from "./Carrito";
+import { CarritoContext } from "../context/CarritoContext";
 
 export function CarritoModal({ show, onClose }) {
   const { carrito, eliminarDelCarrito } = useContext(CarritoContext);

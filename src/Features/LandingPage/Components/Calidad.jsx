@@ -25,9 +25,9 @@ export function Calidad() {
           <p>Te guiamos en tu compra y resolvemos tus dudas con rapidez.</p>
         </div>
         <div className="col-md-4 text-center">
-          <i className="bi bi-heart-fill display-4 text-pink mb-3"></i>
-          <h5 className="fw-bold">Hecho con Pasión</h5>
-          <p>Más que una tienda, somos fanáticos como tú. ¡Lo vivimos contigo!</p>
+          <i className="bi bi-backpack2 display-4 text-pink mb-3"></i>
+          <h5 className="fw-bold">Respaldo garantizado</h5>
+          <p>Años de experiencia nos respaldan como lo mejor de lo mejor.</p>
         </div>
         <div className="col-md-4 text-center">
           <i className="bi bi-box-seam display-4 text-info mb-3"></i>

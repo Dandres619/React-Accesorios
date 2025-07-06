@@ -24,7 +24,7 @@ export function Contacto() {
                 </li>
                 <li className="mb-3">
                   <i className="bi bi-envelope me-2 text-secondary"></i>
-                  contacto@futvibe.com
+                  contacto@allvibe.com
                 </li>
                 <li>
                   <i className="bi bi-clock me-2 text-secondary"></i>
