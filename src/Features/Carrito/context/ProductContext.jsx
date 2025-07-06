@@ -1,4 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
+import {
+  obtenerProductos,
+  crearProducto,
+  editarProducto,
+  eliminarProducto,
+} from "../../dashboard/services/productosService";
 
 export const ProductContext = createContext();
 
@@ -7,23 +13,49 @@ export const ProductProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    async function datosDeportivos() {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        setProductos(data);
-      } catch (error) {
-        setError(error.message || "Error al cargar productos");
-      } finally {
-        setLoading(false);
-      }
+  const cargarProductos = async () => {
+    try {
+      setLoading(true);
+      const data = await obtenerProductos();
+      setProductos(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-    datosDeportivos();
+  };
+
+  const crear = async (nuevoProducto) => {
+    await crearProducto(nuevoProducto);
+    cargarProductos();
+  };
+
+  const editar = async (id, actualizado) => {
+    await editarProducto(id, actualizado);
+    cargarProductos();
+  };
+
+  const eliminar = async (id) => {
+    await eliminarProducto(id);
+    cargarProductos();
+  };
+
+  useEffect(() => {
+    cargarProductos();
   }, []);
 
   return (
-    <ProductContext.Provider value={{ productos, loading, error }}>
+    <ProductContext.Provider
+      value={{
+        productos,
+        loading,
+        error,
+        crearProducto: crear,
+        editarProducto: editar,
+        eliminarProducto: eliminar,
+        recargarProductos: cargarProductos,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
