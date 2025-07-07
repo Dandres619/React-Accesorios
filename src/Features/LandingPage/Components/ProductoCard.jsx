@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { CarritoContext } from "../../Carrito/context/CarritoContext";
 
-export function ProductoCard({ key, imagen, titulo, descripcion, precio, alt }) {
+export function ProductoCard({ imagen, titulo, descripcion, precio, alt }) {
   const [contador, setContador] = useState(0);
   const [mensaje, setMensaje] = useState("");
   const { agregarAlCarrito } = useContext(CarritoContext);
@@ -27,7 +27,7 @@ export function ProductoCard({ key, imagen, titulo, descripcion, precio, alt }) 
 
   return (
     <div className="col-md-6 col-lg-3">
-      <div key={key} className="card h-100 shadow-sm producto-card">
+      <div className="card h-100 shadow-sm producto-card">
         <img
           src={imagen}
           className="card-img-top object-fit-cover"

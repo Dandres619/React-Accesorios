@@ -24,7 +24,7 @@ export function DashboardCard({ producto, onEdit, onDelete }) {
           </button>
           <button
             className="btn btn-danger btn-sm"
-            onClick={() => onDelete(producto._id)}
+            onClick={() => onDelete(producto.id)}
           >
             Eliminar
           </button>

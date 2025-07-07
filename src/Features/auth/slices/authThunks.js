@@ -1,4 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
+
 import {
   loginStart,
   loginSuccess,
@@ -53,7 +55,7 @@ export const registerUser = createAsyncThunk(
     }
 
     const newUser = {
-      id: Date.now(),
+      id: uuidv4(),
       name,
       email,
       password,

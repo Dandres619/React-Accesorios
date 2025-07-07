@@ -1,10 +1,10 @@
-import { useContext, useState, useMemo } from "react";
+import { useContext, useState, useMemo, useEffect } from "react";
 import { ProductContext } from "../../Carrito/context/ProductContext";
 import { DashboardCard } from "../components/DashboardCard";
 import { ProductForm } from "../components/ProductForm";
 
 export function DashboardPage() {
-  const { productos, loading, error, eliminarProducto } =
+  const { productos, loading, error, eliminarProducto, cargarProductos } =
     useContext(ProductContext);
   const [modoEdicion, setModoEdicion] = useState(false);
   const [productoActual, setProductoActual] = useState(null);
@@ -46,21 +46,16 @@ export function DashboardPage() {
 
   const cambiarPagina = (numero) => setPaginaActual(numero);
 
-  if (loading) {
-    return (
-      <div className="d-flex flex-column min-vh-100">
-        <main className="flex-grow-1 d-flex justify-content-center align-items-center">
-          <p className="text-center">Cargando productos...</p>
-        </main>
-      </div>
-    );
-  }
+  useEffect(() => {
+    cargarProductos();
+  }, []);
 
-  if (error) {
+  if (loading || error) {
     return (
       <div className="d-flex flex-column min-vh-100">
         <main className="flex-grow-1 d-flex justify-content-center align-items-center">
-          <p className="text-danger text-center">{error}</p>
+          {loading && <p className="text-center">Cargando productos...</p>}
+          {error && <p className="text-danger text-center">{error}</p>}
         </main>
       </div>
     );
@@ -94,14 +89,16 @@ export function DashboardPage() {
 
             <div className="row g-4">
               {productosPaginados.length > 0 ? (
-                productosPaginados.map((producto) => (
-                  <DashboardCard
-                    key={producto._id}
-                    producto={producto}
-                    onEdit={handleEditar}
-                    onDelete={handleEliminar}
-                  />
-                ))
+                productosPaginados.map((producto) => {
+                  return (
+                    <DashboardCard
+                      key={producto.id}
+                      producto={producto}
+                      onEdit={handleEditar}
+                      onDelete={handleEliminar}
+                    />
+                  );
+                })
               ) : (
                 <div className="text-center w-100 mt-5">
                   <i className="bi bi-box-seam fs-1 text-muted"></i>

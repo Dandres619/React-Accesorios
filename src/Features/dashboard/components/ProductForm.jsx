@@ -24,8 +24,9 @@ export function ProductForm({ producto, modoEdicion, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (modoEdicion) {
-      await editarProducto(producto._id, formData);
+      await editarProducto(producto.id, formData);
     } else {
+      console.log("Creando nuevo producto:", formData); // Agrega esto
       await crearProducto(formData);
     }
     onClose();

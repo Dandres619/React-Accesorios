@@ -1,9 +1,9 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import {
   obtenerProductos,
-  crearProducto,
-  editarProducto,
-  eliminarProducto,
+  crearProductoDB,
+  editarProductoDB,
+  eliminarProductoDB,
 } from "../../dashboard/services/productosService";
 
 export const ProductContext = createContext();
@@ -16,28 +16,43 @@ export const ProductProvider = ({ children }) => {
   const cargarProductos = async () => {
     try {
       setLoading(true);
+      setError("");
       const data = await obtenerProductos();
       setProductos(data);
     } catch (err) {
-      setError(err.message);
+      console.error("Error al cargar productos:", err.message);
+      setError("Error al cargar productos");
     } finally {
       setLoading(false);
     }
   };
 
   const crear = async (nuevoProducto) => {
-    await crearProducto(nuevoProducto);
-    cargarProductos();
+    try {
+      await crearProductoDB(nuevoProducto);
+      await cargarProductos();
+    } catch (err) {
+      console.error("Error al crear producto:", err.message);
+      setError("Error al crear producto");
+    }
   };
 
   const editar = async (id, actualizado) => {
-    await editarProducto(id, actualizado);
-    cargarProductos();
+    try {
+      await editarProductoDB(id, actualizado);
+      await cargarProductos();
+    } catch (err) {
+      setError("Error al editar producto");
+    }
   };
 
   const eliminar = async (id) => {
-    await eliminarProducto(id);
-    cargarProductos();
+    try {
+      await eliminarProductoDB(id);
+      await cargarProductos();
+    } catch (err) {
+      setError("Error al eliminar producto");
+    }
   };
 
   useEffect(() => {
@@ -53,7 +68,7 @@ export const ProductProvider = ({ children }) => {
         crearProducto: crear,
         editarProducto: editar,
         eliminarProducto: eliminar,
-        recargarProductos: cargarProductos,
+        cargarProductos,
       }}
     >
       {children}

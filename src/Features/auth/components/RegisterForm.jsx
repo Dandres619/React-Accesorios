@@ -35,7 +35,7 @@ export const RegisterForm = () => {
     if (isFormValid) {
       const result = await register({ name, email, password });
       if (result?.meta?.requestStatus === "fulfilled") {
-        navigate("/inicio");
+        navigate("/");
       } else {
         setLocalError(result.payload);
       }

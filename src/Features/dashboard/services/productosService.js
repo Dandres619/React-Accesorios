@@ -1,35 +1,46 @@
-const BASE_URL =
-  "https://crudcrud.com/api/d5f6a6b763a9464f87a00f0eb036d79e/productos";
+import { supabase } from "../components/supabaseClient";
+
+const obtenerUsuarioActual = () => {
+  const user = JSON.parse(localStorage.getItem("usuarioActual"));
+  return user;
+};
 
 export const obtenerProductos = async () => {
-  const res = await fetch(BASE_URL);
-  if (!res.ok) throw new Error("Error al obtener productos");
-  return await res.json();
+  const { data, error } = await supabase.from("productos").select("*");
+  if (error) throw new Error("Error al obtener productos");
+  return data;
 };
 
-export const crearProducto = async (producto) => {
-  const res = await fetch(BASE_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(producto),
-  });
-  if (!res.ok) throw new Error("Error al crear producto");
-  return await res.json();
+export const crearProductoDB = async (producto) => {
+  const user = JSON.parse(localStorage.getItem("usuarioActual"));
+  if (!user || !user.id) throw new Error("No hay usuario autenticado");
+
+  const productoConUser = {
+    ...producto,
+    price: Number(producto.price),
+    user_id: user.id,
+  };
+
+  const { error } = await supabase.from("productos").insert([productoConUser]);
+  if (error) {
+    console.error("Error al crear producto:", error);
+    throw new Error("Error al crear producto");
+  }
 };
 
-export const editarProducto = async (id, productoActualizado) => {
-  const { _id, ...producto } = productoActualizado;
-
-  const res = await fetch(`${BASE_URL}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(producto),
-  });
-
-  if (!res.ok) throw new Error("Error al editar producto");
+export const editarProductoDB = async (id, productoActualizado) => {
+  const { error } = await supabase
+    .from("productos")
+    .update(productoActualizado)
+    .eq("id", id);
+  if (error) throw new Error("Error al editar producto");
 };
 
-export const eliminarProducto = async (id) => {
-  const res = await fetch(`${BASE_URL}/${id}`, { method: "DELETE" });
-  if (!res.ok) throw new Error("Error al eliminar producto");
+export const eliminarProductoDB = async (id) => {
+  console.log("Eliminando producto con id:", id);
+  const { error } = await supabase.from("productos").delete().eq("id", id);
+  if (error) {
+    console.error("Error de Supabase al eliminar:", error);
+    throw new Error("Error al eliminar producto");
+  }
 };
